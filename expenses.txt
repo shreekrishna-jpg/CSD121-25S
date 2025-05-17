@@ -1,0 +1,2 @@
+mango: $30.0
+Total spent: $30.0

@@ -1,0 +1,4 @@
+apple - $2.5
+mango - $3.0
+bag - $4.7
+Total amount you spent today is : $10.2
