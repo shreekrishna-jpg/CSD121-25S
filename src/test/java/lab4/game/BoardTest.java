@@ -56,3 +56,4 @@ public class BoardTest {
         assertTrue(board.isFull(), "Board should be full after filling all cells");
     }
 }
+
