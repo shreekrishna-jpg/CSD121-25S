@@ -3,7 +3,11 @@ package lab4.ui;
 
 import static com.diogonunes.jcolor.Ansi.colorize;
 import static com.diogonunes.jcolor.Attribute.*;
-
+import java.util.Scanner;
+import lab4.game.Board;
+import lab4.game.Position;
+import lab4.game.Row;
+import lab4.game.Col;
 
 /**
  * Helper methods for doing console-based user interaction

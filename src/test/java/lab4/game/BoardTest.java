@@ -6,17 +6,18 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class BoardTest {
 
+
     @Test
     void testBoardStartsEmpty() {
         Board board = new Board();
-        Position pos = new Position(Row.TOP, Col.A);
+        Position pos = new Position(Row.Top, Col.Left);
         assertFalse(board.isOccupiedAt(pos), "Board should start empty");
     }
 
     @Test
     void testPlaceXThenOccupied() {
         Board board = new Board();
-        Position pos = new Position(Row.MIDDLE, Col.B);
+        Position pos = new Position(Row.Middle, Col.Middle);
         board.placeX(pos);
         assertTrue(board.isOccupiedAt(pos), "After placing X, position should be occupied");
     }
@@ -24,7 +25,7 @@ public class BoardTest {
     @Test
     void testPlaceOThenOccupied() {
         Board board = new Board();
-        Position pos = new Position(Row.BOTTOM, Col.C);
+        Position pos = new Position(Row.Bottom, Col.Right);
         board.placeO(pos);
         assertTrue(board.isOccupiedAt(pos), "After placing O, position should be occupied");
     }
@@ -32,10 +33,11 @@ public class BoardTest {
     @Test
     void testPlaceOnOccupiedFails() {
         Board board = new Board();
-        Position pos = new Position(Row.TOP, Col.B);
+        Position pos = new Position(Row.Top, Col.Middle);
         board.placeX(pos);
         assertThrows(IllegalStateException.class, () -> board.placeO(pos), "Cannot place O on occupied spot");
     }
+
 
     @Test
     void testToStringNotNull() {

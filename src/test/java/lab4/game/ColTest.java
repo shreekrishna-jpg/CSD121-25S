@@ -8,28 +8,29 @@ public class ColTest {
 
     @Test
     void testValidLowercaseInputs() {
-        assertEquals(Col.A, Col.from("a"));
-        assertEquals(Col.B, Col.from("b"));
-        assertEquals(Col.C, Col.from("c"));
+        assertEquals(Col.Left, Col.from("l"));
+        assertEquals(Col.Middle, Col.from("m"));
+        assertEquals(Col.Right, Col.from("r"));
     }
 
     @Test
     void testValidUppercaseInputs() {
-        assertEquals(Col.A, Col.from("A"));
-        assertEquals(Col.B, Col.from("B"));
-        assertEquals(Col.C, Col.from("C"));
+        assertEquals(Col.Left, Col.from("L"));
+        assertEquals(Col.Middle, Col.from("M"));
+        assertEquals(Col.Right, Col.from("R"));
     }
 
     @Test
     void testCaseInsensitivity() {
-        assertEquals(Col.D, Col.from("D"));
-        assertEquals(Col.D, Col.from("d"));
-        assertEquals(Col.M, Col.from("M"));
-        assertEquals(Col.M, Col.from("m"));
+        assertEquals(Col.Left, Col.from("L"));
+        assertEquals(Col.Middle, Col.from("m"));
+        assertEquals(Col.Right, Col.from("R"));
     }
 
     @Test
     void testInvalidInputThrows() {
         assertThrows(IllegalArgumentException.class, () -> Col.from("Z"));
         assertThrows(IllegalArgumentException.class, () -> Col.from("1"));
-        assertThrows(IllegalArgumentException
+        assertThrows(IllegalArgumentException.class, () -> Col.from(""));
+    }
+}
