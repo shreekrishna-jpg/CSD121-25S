@@ -34,4 +34,3 @@ public class ColTest {
         assertThrows(IllegalArgumentException.class, () -> Col.from(""));
     }
 }
-
