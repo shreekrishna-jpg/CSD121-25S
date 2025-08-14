@@ -56,4 +56,58 @@ class MainTest {
 
     // TODO: test the searchRecipes method
 
+    @Test
+    void testSearchRecipesFindsByName() {
+        var recipes = Main.searchRecipes("chicken", () -> List.of(
+                new Recipe(0, "Chicken Soup", "Warm and hearty", "", 4, 10, 10, 20),
+                new Recipe(1, "Tomato Pasta", "Fresh and tasty", "", 4, 10, 10, 15)
+        ));
+
+        assertEquals(1, recipes.size());
+        assertEquals(0, recipes.get(0).id());
+    }
+
+    @Test
+    void testSearchRecipesFindsByDescription() {
+        var recipes = Main.searchRecipes("tomato", () -> List.of(
+                new Recipe(0, "Veggie Salad", "Fresh tomato and cucumber", "", 4, 10, 10, 5),
+                new Recipe(1, "Fruit Smoothie", "Sweet and refreshing", "", 4, 10, 10, 7)
+        ));
+
+        assertEquals(1, recipes.size());
+        assertEquals(0, recipes.get(0).id());
+    }
+
+    @Test
+    void testSearchRecipesIsCaseInsensitive() {
+        var recipes = Main.searchRecipes("ChOcOlAtE", () -> List.of(
+                new Recipe(0, "Chocolate Cake", "Rich and delicious", "", 4, 10, 10, 50),
+                new Recipe(1, "chocolate mousse", "Creamy dessert", "", 4, 10, 10, 30)
+        ));
+
+        assertEquals(2, recipes.size());
+    }
+
+    /**
+     * The below given test verifies that searchRecipes returns an empty list when no recipes match.
+     */
+    @Test
+    void testSearchRecipesReturnsEmptyListWhenNoMatches() {
+        var recipes = Main.searchRecipes("pizza", () -> List.of(
+                new Recipe(0, "Pancakes", "Fluffy breakfast treat", "", 4, 10, 10, 15),
+                new Recipe(1, "Omelette", "Eggs and veggies", "", 4, 10, 10, 10)
+        ));
+
+        assertEquals(0, recipes.size());
+    }
+
+    @Test
+    void testSearchRecipesReturnsEmptyListOnError() {
+        var recipes = Main.searchRecipes("anything", () -> {
+            throw new RuntimeException("Database error");
+        });
+
+        assertEquals(0, recipes.size());
+    }
+
 }
